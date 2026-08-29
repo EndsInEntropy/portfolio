@@ -21,7 +21,6 @@ const d = entry.data;
 
   <div class="cs-card__body">
     <div class="cs-card__top">
-      <span class="mono text-accent">{String(index).padStart(2, '0')}</span>
       <span class="mono text-faint">{d.year}</span>
       {d.sample && <span class="tag tag--sample">Sample</span>}
     </div>
@@ -29,8 +28,8 @@ const d = entry.data;
     <h3 class="display cs-card__title">{d.title}</h3>
     <p class="prose text-soft cs-card__summary">{d.summary}</p>
 
-    <ul class="cs-card__tags">
-      {d.tags.map((t: string) => <li class="mono">{t}</li>)}
+    <ul class="cs-card__tags mono text-faint">
+      {d.tags.map((t: string) => <li>{t}</li>)}
     </ul>
   </div>
 </a>
@@ -44,7 +43,6 @@ const d = entry.data;
 
   .cs-card__media {
     overflow: hidden;
-    border: 1px solid var(--line);
   }
 
   .cs-card__media img {
@@ -84,13 +82,10 @@ const d = entry.data;
 
   .cs-card__tags li {
     font-size: var(--step--1);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
   }
 
   .cs-card__tags li:not(:last-child)::after {
-    content: '/';
+    content: '\00b7';
     margin-left: 0.6rem;
     color: var(--line-strong);
   }

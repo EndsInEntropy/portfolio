@@ -13,7 +13,7 @@ const { figure, heading, images } = Astro.props;
 <div class="block gallery-block wrap">
   {(figure || heading) && (
     <div class="gallery-block__head">
-      {figure && <span class="mono text-accent">FIG. {figure}</span>}
+      {figure && <span class="mono text-faint">{figure}</span>}
       {heading && <h3 class="display gallery-block__heading">{heading}</h3>}
     </div>
   )}
@@ -23,7 +23,7 @@ const { figure, heading, images } = Astro.props;
         {image.src
           ? <img src={image.src} alt={image.alt} loading="lazy" />
           : <TechnicalPlaceholder label={image.alt} figure={figure ? `${figure}.${i + 1}` : undefined} ratio="4/3" />}
-        {image.caption && <figcaption class="mono text-soft">{image.caption}</figcaption>}
+        {image.caption && <figcaption class="text-soft">{image.caption}</figcaption>}
       </figure>
     ))}
   </div>

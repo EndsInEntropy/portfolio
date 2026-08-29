@@ -49,8 +49,8 @@ const specs = [
       <dl class="cs-specs__grid">
         {specs.map((s) => (
           <div class="cs-specs__item">
-            <dt class="mono text-faint">{s.label}</dt>
-            <dd class="mono">{s.value}</dd>
+            <dt class="text-faint">{s.label}</dt>
+            <dd>{s.value}</dd>
           </div>
         ))}
       </dl>
@@ -63,7 +63,7 @@ const specs = [
           : <TechnicalPlaceholder label={d.coverImage.alt} figure="00" ratio="21/9" />}
       </div>
       {d.coverImage.caption && (
-        <figcaption class="wrap mono text-soft cs-cover__caption">{d.coverImage.caption}</figcaption>
+        <figcaption class="wrap text-soft cs-cover__caption">{d.coverImage.caption}</figcaption>
       )}
     </figure>
 
@@ -73,7 +73,7 @@ const specs = [
           {d.metrics.map((m: { value: string; label: string }) => (
             <div class="cs-metrics__item">
               <span class="display cs-metrics__value">{m.value}</span>
-              <span class="mono text-soft cs-metrics__label">{m.label}</span>
+              <span class="text-soft cs-metrics__label">{m.label}</span>
             </div>
           ))}
         </div>
@@ -136,24 +136,20 @@ const specs = [
   .cs-specs__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    border-top: 1px solid var(--line-strong);
-    border-bottom: 1px solid var(--line-strong);
+    gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    padding-block: clamp(1.25rem, 1rem + 1vw, 2rem);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
   .cs-specs__item {
-    padding: 1rem 1.25rem;
-    border-left: 1px solid var(--line-strong);
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
   }
 
-  .cs-specs__item:last-child { border-right: 1px solid var(--line-strong); }
-
   .cs-specs__item dt {
     font-size: var(--step--1);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 
   .cs-specs__item dd {
@@ -169,7 +165,6 @@ const specs = [
     width: 100%;
     aspect-ratio: 21 / 9;
     object-fit: cover;
-    border: 1px solid var(--line);
   }
 
   .cs-cover__caption {
@@ -200,8 +195,6 @@ const specs = [
 
   .cs-metrics__label {
     font-size: var(--step--1);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
   }
 
   .cs-body {

@@ -18,13 +18,12 @@ function isActive(href: string) {
 
     <nav class="site-header__nav">
       <ol class="site-header__list">
-        {site.nav.map((item: { label: string; href: string }, i: number) => (
+        {site.nav.map((item: { label: string; href: string }) => (
           <li>
             <a
               href={withBase(item.href)}
-              class:list={['site-header__link mono', { 'is-active': isActive(item.href) }]}
+              class:list={['site-header__link', { 'is-active': isActive(item.href) }]}
             >
-              <span class="site-header__index">{String(i + 1).padStart(2, '0')}</span>
               {item.label}
             </a>
           </li>
@@ -52,32 +51,25 @@ function isActive(href: string) {
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: 0.02em;
-    border: 1px solid var(--ink);
-    padding: 0.15em 0.5em;
   }
 
   .site-header__list {
     display: flex;
-    gap: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+    gap: clamp(1.25rem, 0.8rem + 2vw, 2.75rem);
   }
 
   .site-header__link {
+    font-family: var(--font-display);
     font-size: var(--step--1);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
+    color: var(--ink-soft);
     padding-bottom: 0.3em;
     border-bottom: 1px solid transparent;
-  }
-
-  .site-header__index {
-    color: var(--accent);
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
   .site-header__link:hover,
   .site-header__link.is-active {
+    color: var(--ink);
     border-bottom-color: var(--ink);
   }
 </style>

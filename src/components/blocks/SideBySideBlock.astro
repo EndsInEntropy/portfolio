@@ -33,8 +33,9 @@ const { left, right } = Astro.props;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: clamp(1.5rem, 1rem + 2vw, 3rem);
-    border: 1px solid var(--line-strong);
-    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+    padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
   .sbs-block__col {
@@ -47,7 +48,7 @@ const { left, right } = Astro.props;
 
   .sbs-block__divider {
     width: 1px;
-    background: var(--line-strong);
+    background: var(--line);
   }
 
   @media (max-width: 720px) {

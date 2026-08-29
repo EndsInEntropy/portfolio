@@ -18,7 +18,7 @@ const { figure, full, image } = Astro.props;
   </div>
   {(figure || image.caption) && (
     <figcaption class="wrap image-block__caption mono">
-      {figure && <span class="text-accent">FIG. {figure} — </span>}
+      {figure && <span class="text-faint">{figure} — </span>}
       <span class="text-soft">{image.caption ?? image.alt}</span>
     </figcaption>
   )}

@@ -9,26 +9,10 @@ interface Props {
 const { label, figure, ratio = '16/10', minimal = false } = Astro.props;
 ---
 
-<div class="ph crossmarks" style={`aspect-ratio: ${ratio};`} role="img" aria-label={label}>
-  <svg class="ph-hatch" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id={`hatch-${figure ?? 'x'}`} width="10" height="10" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-        <line x1="0" y1="0" x2="0" y2="10" stroke="currentColor" stroke-width="1"></line>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill={`url(#hatch-${figure ?? 'x'})`}></rect>
-  </svg>
-
-  <div class="ph-frame">
-    <span class="ph-corner ph-corner--tl"></span>
-    <span class="ph-corner ph-corner--tr"></span>
-    <span class="ph-corner ph-corner--bl"></span>
-    <span class="ph-corner ph-corner--br"></span>
-  </div>
-
+<div class="ph" style={`aspect-ratio: ${ratio};`} role="img" aria-label={label}>
   {!minimal && (
     <div class="ph-label">
-      {figure && <span class="mono ph-fig">FIG. {figure}</span>}
+      {figure && <span class="mono ph-fig">{figure}</span>}
       <span class="mono ph-text">{label}</span>
     </div>
   )}
@@ -43,58 +27,27 @@ const { label, figure, ratio = '16/10', minimal = false } = Astro.props;
     width: 100%;
     background: var(--surface);
     overflow: hidden;
-    color: var(--line-strong);
   }
-
-  .ph-hatch {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
-  }
-
-  .ph-frame {
-    position: absolute;
-    inset: 14px;
-    pointer-events: none;
-  }
-
-  .ph-corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-  }
-  .ph-corner--tl { top: 0; left: 0; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
-  .ph-corner--tr { top: 0; right: 0; border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); }
-  .ph-corner--bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink); border-left: 1px solid var(--ink); }
-  .ph-corner--br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); }
 
   .ph-label {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 1.25em;
+    bottom: 1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.35em;
-    text-align: center;
-    padding: 0.75em 1.25em;
-    background: var(--paper);
-    border: 1px solid var(--line-strong);
-    max-width: 80%;
+    gap: 0.3em;
+    max-width: 70%;
   }
 
   .ph-fig {
     font-size: var(--step--1);
-    letter-spacing: 0.1em;
-    color: var(--accent);
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
   }
 
   .ph-text {
     font-size: var(--step--1);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     color: var(--ink-soft);
   }
 
@@ -103,7 +56,7 @@ const { label, figure, ratio = '16/10', minimal = false } = Astro.props;
     bottom: 6px;
     right: 10px;
     font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--accent);
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
   }
 </style>
