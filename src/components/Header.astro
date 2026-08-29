@@ -1,6 +1,7 @@
 ---
 import site from '../data/site.json';
 import { withBase } from '../lib/url';
+import Logomark from './Logomark.astro';
 
 const currentPath = Astro.url.pathname;
 
@@ -12,8 +13,8 @@ function isActive(href: string) {
 
 <header class="site-header">
   <div class="wrap site-header__row">
-    <a href={withBase('/')} class="site-header__mark mono">
-      {site.name.split(' ').map((w: string) => w[0]).join('')}
+    <a href={withBase('/')} class="site-header__mark" aria-label={`${site.name} — home`}>
+      <Logomark size={24} />
     </a>
 
     <nav class="site-header__nav">
@@ -47,10 +48,14 @@ function isActive(href: string) {
   }
 
   .site-header__mark {
-    font-size: var(--step-1);
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    color: var(--ink);
+    transition: color 0.15s ease;
+  }
+
+  .site-header__mark:hover {
+    color: var(--accent);
   }
 
   .site-header__list {

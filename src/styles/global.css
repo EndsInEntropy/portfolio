@@ -13,6 +13,7 @@
   --accent: #1f5d40;
   --accent-ink: #f2f7f3;
   --accent-soft: #e3ede6;
+  --ghost: #e2e3dd;
 
   /* Type */
   --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
@@ -96,12 +97,20 @@ body {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.6em;
   font-family: var(--font-mono);
   font-size: var(--step--1);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-faint);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.4em;
+  height: 1px;
+  background: var(--ink-faint);
+  flex: none;
 }
 
 .display {
@@ -119,6 +128,34 @@ body {
 
 .text-soft { color: var(--ink-soft); }
 .text-faint { color: var(--ink-faint); }
+
+/* ==========================================================================
+   Ghost numerals — oversized index marks used as a graphic device
+   ========================================================================== */
+.ghost-num {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ghost);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   Vertical rotated label — running along an edge, technical-annotation style
+   ========================================================================== */
+.vertical-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
 .text-accent { color: var(--accent); }
 
 .prose p + p { margin-top: 1.1em; }

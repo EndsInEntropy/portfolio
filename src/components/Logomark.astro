@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: number;
+}
+
+const { size = 26 } = Astro.props;
+---
+
+<svg
+  class="logomark"
+  width={size}
+  height={size * 0.64}
+  viewBox="0 0 32 20"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <rect x="1.4" y="1.4" width="10.2" height="17.2" rx="5.1" stroke="currentColor" stroke-width="1.5" />
+  <line x1="2.6" y1="16.8" x2="10.4" y2="3.2" stroke="currentColor" stroke-width="1.5" />
+  <rect x="20.4" y="1.4" width="10.2" height="17.2" rx="5.1" stroke="currentColor" stroke-width="1.5" />
+  <line x1="21.6" y1="16.8" x2="29.4" y2="3.2" stroke="currentColor" stroke-width="1.5" />
+</svg>
+
+<style>
+  .logomark {
+    display: block;
+  }
+</style>

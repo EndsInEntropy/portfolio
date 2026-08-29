@@ -32,17 +32,22 @@ const specs = [
 <BaseLayout title={d.title} description={d.summary}>
   <article>
     <header class="cs-hero wrap">
-      <div class="cs-hero__top">
-        <p class="eyebrow">{d.client}</p>
-        {d.sample && <span class="tag tag--sample">Sample content</span>}
+      <span class="ghost-num cs-hero__ghost" aria-hidden="true">{String(currentIndex + 1).padStart(2, '0')}</span>
+      <span class="vertical-label cs-hero__vertical" aria-hidden="true">{d.client} — {d.year}</span>
+
+      <div class="cs-hero__content">
+        <div class="cs-hero__top">
+          <p class="eyebrow">{d.client}</p>
+          {d.sample && <span class="tag tag--sample">Sample content</span>}
+        </div>
+
+        <h1 class="display cs-hero__title">{d.title}</h1>
+        <p class="prose text-soft cs-hero__subtitle">{d.subtitle}</p>
+
+        <ul class="cs-hero__tags">
+          {d.tags.map((t: string) => <li class="tag">{t}</li>)}
+        </ul>
       </div>
-
-      <h1 class="display cs-hero__title">{d.title}</h1>
-      <p class="prose text-soft cs-hero__subtitle">{d.subtitle}</p>
-
-      <ul class="cs-hero__tags">
-        {d.tags.map((t: string) => <li class="tag">{t}</li>)}
-      </ul>
     </header>
 
     <section class="cs-specs wrap">
@@ -100,8 +105,31 @@ const specs = [
 
 <style>
   .cs-hero {
+    position: relative;
     padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
     padding-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+    overflow: hidden;
+  }
+
+  .cs-hero__ghost {
+    top: -0.35em;
+    right: var(--margin);
+    font-size: clamp(5rem, 3.5rem + 9vw, 11rem);
+  }
+
+  .cs-hero__vertical {
+    position: absolute;
+    top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    right: calc(var(--margin) * 0.4);
+  }
+
+  @media (max-width: 720px) {
+    .cs-hero__ghost, .cs-hero__vertical { display: none; }
+  }
+
+  .cs-hero__content {
+    position: relative;
+    z-index: 1;
   }
 
   .cs-hero__top {

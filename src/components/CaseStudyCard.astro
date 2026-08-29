@@ -20,17 +20,21 @@ const d = entry.data;
   </div>
 
   <div class="cs-card__body">
-    <div class="cs-card__top">
-      <span class="mono text-faint">{d.year}</span>
-      {d.sample && <span class="tag tag--sample">Sample</span>}
+    <span class="ghost-num cs-card__ghost" aria-hidden="true">{String(index).padStart(2, '0')}</span>
+
+    <div class="cs-card__content">
+      <div class="cs-card__top">
+        <span class="mono text-faint">{d.year}</span>
+        {d.sample && <span class="tag tag--sample">Sample</span>}
+      </div>
+
+      <h3 class="display cs-card__title">{d.title}</h3>
+      <p class="prose text-soft cs-card__summary">{d.summary}</p>
+
+      <ul class="cs-card__tags mono text-faint">
+        {d.tags.map((t: string) => <li>{t}</li>)}
+      </ul>
     </div>
-
-    <h3 class="display cs-card__title">{d.title}</h3>
-    <p class="prose text-soft cs-card__summary">{d.summary}</p>
-
-    <ul class="cs-card__tags mono text-faint">
-      {d.tags.map((t: string) => <li>{t}</li>)}
-    </ul>
   </div>
 </a>
 
@@ -43,6 +47,21 @@ const d = entry.data;
 
   .cs-card__media {
     overflow: hidden;
+  }
+
+  .cs-card__body {
+    position: relative;
+  }
+
+  .cs-card__ghost {
+    top: 0;
+    left: -0.05em;
+    font-size: clamp(3rem, 2.2rem + 3vw, 4.5rem);
+  }
+
+  .cs-card__content {
+    position: relative;
+    z-index: 1;
   }
 
   .cs-card__media img {
