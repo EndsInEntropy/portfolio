@@ -1,0 +1,89 @@
+{
+  "title": "A design system for 40 product squads",
+  "subtitle": "Building the governance model as carefully as the components",
+  "client": "Atlas Health",
+  "role": "Head of Product Design — sponsored and staffed the systems team",
+  "year": "2021–2023",
+  "timeline": "2 years, ongoing",
+  "team": "3 systems designers, 2 systems engineers, contributions from 40+ product squads",
+  "tags": ["Design Systems", "Design Ops", "Enterprise"],
+  "summary": "Stood up a design systems function from scratch inside a fast-growing healthcare platform, and the contribution model that let it survive 4x company growth.",
+  "coverImage": {
+    "alt": "Atlas design system cover, component library grid with annotated spacing tokens"
+  },
+  "metrics": [
+    { "value": "4x", "label": "company headcount growth during rollout" },
+    { "value": "86%", "label": "of squads on the shared system within 18 months" },
+    { "value": "−61%", "label": "time to ship a new form flow" }
+  ],
+  "featured": true,
+  "sample": true,
+  "order": 3,
+  "sections": [
+    {
+      "type": "text",
+      "eyebrow": "Context",
+      "heading": "The system wasn't the hard part",
+      "body": [
+        "Atlas had tried to build a design system twice before I joined, and both attempts stalled — not because the components were wrong, but because adoption was voluntary and nobody owned the tradeoff between system consistency and squad velocity. My first move was organizational, not visual: get an explicit mandate and a governance model before drawing another button.",
+        "I proposed a federated model — a small central team owns primitives and tokens, embedded 'system champions' in each product area own domain-specific patterns, and every squad has a fast path to propose new components rather than fork the system quietly."
+      ]
+    },
+    {
+      "type": "image",
+      "figure": "01",
+      "image": {
+        "alt": "Governance diagram showing the federated contribution model between central team and squad champions",
+        "caption": "The contribution model, presented to engineering leadership, Q3 2021"
+      }
+    },
+    {
+      "type": "text",
+      "eyebrow": "Approach",
+      "heading": "Token architecture before component architecture",
+      "body": [
+        "We started with a three-tier token system — primitive, semantic, and component-level tokens — specifically so the visual language could evolve (a full rebrand happened 14 months in) without a component-by-component migration. That decision paid for itself directly: the rebrand touched token definitions in one place and propagated automatically."
+      ]
+    },
+    {
+      "type": "gallery",
+      "figure": "02",
+      "heading": "System architecture",
+      "images": [
+        { "alt": "Token tier diagram: primitive, semantic, component" },
+        { "alt": "Component anatomy sheet for the shared form-field pattern" },
+        { "alt": "Contribution workflow diagram from proposal to merged component" }
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "It's the first system here that got harder to ignore than to use.",
+      "attribution": "Engineering director, Clinical Products"
+    },
+    {
+      "type": "text",
+      "eyebrow": "Impact",
+      "heading": "Measuring adoption, not just existence",
+      "body": [
+        "I pushed for adoption metrics to be visible the same way uptime is — a dashboard tracking token and component usage per squad, reviewed monthly with engineering leadership. Making adoption legible turned it from a design initiative into a shared operating metric, which is what got us through a period of 4x headcount growth without the system fragmenting again."
+      ]
+    },
+    {
+      "type": "stats",
+      "heading": "18 months post-launch",
+      "items": [
+        { "value": "86%", "label": "squads on shared system" },
+        { "value": "−61%", "label": "time to ship a new form flow" },
+        { "value": "1", "label": "company rebrand absorbed without a migration" }
+      ]
+    },
+    {
+      "type": "text",
+      "eyebrow": "Reflection",
+      "heading": "What made it stick",
+      "body": [
+        "The two earlier attempts had good components and no model for who decides what goes in them. The lesson I carried forward: a design system is a governance problem wearing a component library's clothes. Solve the former and the latter gets much easier to sustain."
+      ]
+    }
+  ]
+}

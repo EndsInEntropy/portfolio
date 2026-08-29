@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/url';
+---
+
+<BaseLayout title="Not found">
+  <section class="wrap not-found">
+    <p class="eyebrow">404</p>
+    <h1 class="display not-found__title">Page not found</h1>
+    <a class="link-arrow" href={withBase('/')}>Back to index →</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: clamp(4rem, 3rem + 6vw, 9rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .not-found__title { font-size: var(--step-4); }
+</style>

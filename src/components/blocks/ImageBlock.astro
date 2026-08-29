@@ -1,0 +1,41 @@
+---
+import TechnicalPlaceholder from '../TechnicalPlaceholder.astro';
+
+interface Props {
+  figure?: string;
+  full?: boolean;
+  image: { src?: string; alt: string; caption?: string };
+}
+
+const { figure, full, image } = Astro.props;
+---
+
+<figure class:list={['block image-block', { 'image-block--full': full }]}>
+  <div class="wrap image-block__inner">
+    {image.src
+      ? <img src={image.src} alt={image.alt} loading="lazy" />
+      : <TechnicalPlaceholder label={image.alt} figure={figure} ratio={full ? '21/9' : '16/9'} />}
+  </div>
+  {(figure || image.caption) && (
+    <figcaption class="wrap image-block__caption mono">
+      {figure && <span class="text-accent">FIG. {figure} — </span>}
+      <span class="text-soft">{image.caption ?? image.alt}</span>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .image-block__inner {
+    max-width: var(--container);
+  }
+
+  .image-block--full .image-block__inner {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .image-block__caption {
+    margin-top: 0.75rem;
+    font-size: var(--step--1);
+  }
+</style>

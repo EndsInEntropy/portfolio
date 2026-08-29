@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const allCaseStudies = (await getCollection('case-studies')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout title="Work" description="Case studies in product design leadership, systems and 0→1 product work.">
+  <section class="work-hero wrap">
+    <p class="eyebrow">Index</p>
+    <h1 class="display work-hero__title">Case studies</h1>
+    <p class="prose text-soft work-hero__lede">
+      {allCaseStudies.length} case {allCaseStudies.length === 1 ? 'study' : 'studies'} spanning
+      0→1 product design, design systems, and design team leadership.
+    </p>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="work-grid wrap">
+    {allCaseStudies.map((entry, i) => (
+      <CaseStudyCard entry={entry} index={i + 1} />
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .work-hero {
+    padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    padding-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+
+  .work-hero__title {
+    font-size: var(--step-4);
+    margin-top: 0.75rem;
+  }
+
+  .work-hero__lede {
+    margin-top: 1rem;
+    font-size: var(--step-1);
+    max-width: 52ch;
+  }
+
+  .work-grid {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 5rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 1.5rem + 2vw, 4rem);
+  }
+
+  @media (max-width: 780px) {
+    .work-grid { grid-template-columns: 1fr; }
+  }
+</style>

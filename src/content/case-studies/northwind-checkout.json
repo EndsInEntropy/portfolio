@@ -1,0 +1,110 @@
+{
+  "title": "Rebuilding checkout for scale",
+  "subtitle": "Cutting cart abandonment while re-platforming payments for a mid-market SaaS company",
+  "client": "Northwind Commerce",
+  "role": "Head of Product Design — led a team of 4 designers and 1 researcher",
+  "year": "2023–2024",
+  "timeline": "9 months",
+  "team": "4 product designers, 1 researcher, 2 PMs, 11 engineers",
+  "tags": ["0→1", "Payments", "Design Systems", "B2B SaaS"],
+  "summary": "Led the redesign of a legacy checkout flow across web and mobile, replacing a 6-step process with a unified, resilient flow that cut abandonment by a third.",
+  "coverImage": {
+    "alt": "Checkout flow cover diagram, three panels showing cart, payment and confirmation states",
+    "caption": "Selected screens from the redesigned checkout flow, 2024"
+  },
+  "metrics": [
+    { "value": "−34%", "label": "cart abandonment" },
+    { "value": "+19%", "label": "checkout completion on mobile" },
+    { "value": "6 → 2", "label": "steps to purchase" }
+  ],
+  "featured": true,
+  "sample": true,
+  "order": 1,
+  "sections": [
+    {
+      "type": "text",
+      "eyebrow": "Context",
+      "heading": "A checkout that hadn't changed in six years",
+      "body": [
+        "Northwind's checkout was built in 2017 and had accumulated a decade of incremental patches: three different payment providers bolted on sequentially, a mobile flow that diverged entirely from desktop, and a six-step process that support tickets consistently flagged as the top source of confusion.",
+        "I joined as the first Head of Product Design and inherited a team without a shared design practice. Before any screens changed, I spent the first month pairing with engineering leads and support to map the system as it actually behaved, not as anyone remembered specifying it."
+      ]
+    },
+    {
+      "type": "image",
+      "figure": "01",
+      "image": {
+        "alt": "Service blueprint mapping the existing six-step checkout across web, mobile and support tooling",
+        "caption": "Service blueprint of the legacy flow, annotated with drop-off data from the previous 12 months"
+      }
+    },
+    {
+      "type": "text",
+      "eyebrow": "Problem",
+      "heading": "Three flows pretending to be one",
+      "body": [
+        "The core issue wasn't any single screen — it was that web, mobile web, and in-app checkout had each evolved separately to work around the same underlying payment API limitations. Fixing the interface without fixing the underlying model would have meant redesigning the same problem three times.",
+        "I made the case to engineering leadership that the redesign needed to start from a single state machine shared across platforms, with the interface layer built on top of it. That reframed the project from a design refresh into a cross-functional platform initiative — and changed the timeline and staffing conversation accordingly."
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "The moment we saw the state machine on a whiteboard next to the actual API calls, it was obvious why every 'small' checkout change had been taking six weeks.",
+      "attribution": "Staff engineer, Payments platform"
+    },
+    {
+      "type": "sidebyside",
+      "left": {
+        "heading": "Before",
+        "body": [
+          "Six sequential steps: cart review, shipping, billing address, payment method, promo code, confirmation.",
+          "Each step was a full page load, with validation errors surfaced only after submission."
+        ]
+      },
+      "right": {
+        "heading": "After",
+        "body": [
+          "Two states: an editable order summary and a single payment step with inline, real-time validation.",
+          "Shipping, billing and promo codes collapsed into progressive disclosure inside the summary state."
+        ]
+      }
+    },
+    {
+      "type": "gallery",
+      "figure": "02",
+      "heading": "Exploration",
+      "images": [
+        { "alt": "Early wireframe exploring a single-page checkout layout" },
+        { "alt": "Wireframe variant testing inline error states for card validation" },
+        { "alt": "Wireframe exploring collapsed promo code and shipping details" }
+      ]
+    },
+    {
+      "type": "text",
+      "eyebrow": "Process",
+      "heading": "Designing against real failure states",
+      "body": [
+        "Payment flows fail in ways most design systems don't account for: declined cards, expired sessions, double submissions, partial network failures mid-transaction. Rather than design the happy path first, I had the team start from a matrix of every failure mode we could find in the support logs and design the recovery state before the success state.",
+        "This produced a much smaller, more resilient component set than a conventional happy-path-first process would have — the final flow shipped with 40% fewer unique UI states than the flow it replaced, despite handling more edge cases correctly."
+      ]
+    },
+    {
+      "type": "stats",
+      "heading": "Six months post-launch",
+      "items": [
+        { "value": "−34%", "label": "cart abandonment" },
+        { "value": "+19%", "label": "mobile completion rate" },
+        { "value": "−52%", "label": "checkout-related support tickets" },
+        { "value": "1", "label": "shared flow across all platforms" }
+      ]
+    },
+    {
+      "type": "text",
+      "eyebrow": "Reflection",
+      "heading": "What I'd do differently",
+      "body": [
+        "We under-invested in the internal tooling that let support and finance inspect a transaction's state, which meant the first month post-launch relied on engineers reading logs directly to answer support escalations. On the next platform-level project, I built that admin tooling in parallel with the customer-facing flow rather than after it."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TechnicalPlaceholder from '../components/TechnicalPlaceholder.astro';
+import { withBase } from '../lib/url';
+import site from '../data/site.json';
+import profile from '../data/profile.json';
+---
+
+<BaseLayout title="Profile" description={`About ${site.name}, ${site.title}.`}>
+  <section class="profile-hero wrap">
+    <div class="profile-hero__grid grid-12">
+      <div class="profile-hero__portrait">
+        {profile.portrait.src
+          ? <img src={profile.portrait.src} alt={profile.portrait.alt} />
+          : <TechnicalPlaceholder label={profile.portrait.alt} figure="P" ratio="3/4" />}
+      </div>
+
+      <div class="profile-hero__intro">
+        <p class="eyebrow">Profile</p>
+        <h1 class="display profile-hero__title">{site.name}</h1>
+        <p class="mono text-soft profile-hero__role">{site.title} — {site.location}</p>
+
+        <div class="prose profile-hero__body">
+          {profile.intro.map((p: string) => <p>{p}</p>)}
+        </div>
+
+        <div class="profile-hero__actions">
+          <a class="btn btn--accent" href={`mailto:${site.email}`}>Email me</a>
+          <a class="btn" href={withBase('/work/')}>See the work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="focus wrap">
+    <p class="eyebrow focus__eyebrow">Focus areas</p>
+    <div class="focus__grid">
+      {profile.focusAreas.map((f: { heading: string; body: string }, i: number) => (
+        <div class="focus__item">
+          <span class="mono text-accent">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="display focus__heading">{f.heading}</h3>
+          <p class="prose text-soft">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="timeline wrap">
+    <p class="eyebrow timeline__eyebrow">Experience</p>
+    <ol class="timeline__rows">
+      {profile.experience.map((e: { role: string; org: string; period: string; summary: string }) => (
+        <li class="timeline__row">
+          <span class="mono text-faint timeline__period">{e.period}</span>
+          <span class="timeline__main">
+            <span class="display timeline__role">{e.role}</span>
+            <span class="mono text-soft">{e.org}</span>
+          </span>
+          <span class="prose text-soft timeline__summary">{e.summary}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .profile-hero {
+    padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+
+  .profile-hero__portrait {
+    grid-column: 1 / span 4;
+  }
+
+  .profile-hero__intro {
+    grid-column: 5 / span 8;
+  }
+
+  .profile-hero__title {
+    font-size: var(--step-4);
+    margin-top: 0.75rem;
+  }
+
+  .profile-hero__role {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .profile-hero__body {
+    margin-top: 1.5rem;
+    font-size: var(--step-0);
+  }
+
+  .profile-hero__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1080px) {
+    .profile-hero__portrait,
+    .profile-hero__intro { grid-column: 1 / -1; }
+    .profile-hero__intro { margin-top: 2rem; }
+  }
+
+  .focus {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+
+  .focus__eyebrow { margin-bottom: 2rem; }
+
+  .focus__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+
+  .focus__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .focus__heading { font-size: var(--step-1); }
+
+  @media (max-width: 780px) {
+    .focus__grid { grid-template-columns: 1fr; }
+  }
+
+  .timeline {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+
+  .timeline__eyebrow { margin-bottom: 1.5rem; }
+
+  .timeline__row {
+    display: grid;
+    grid-template-columns: 9rem 1fr 1fr;
+    gap: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+    align-items: baseline;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .timeline__rows li:last-child { border-bottom: 1px solid var(--line); }
+
+  .timeline__period { font-size: var(--step--1); }
+
+  .timeline__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .timeline__role { font-size: var(--step-1); }
+
+  .timeline__summary {
+    font-size: var(--step--1);
+    max-width: 42ch;
+  }
+
+  @media (max-width: 780px) {
+    .timeline__row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+{
+  "name": "Your Name",
+  "title": "Head of Product Design",
+  "heroStatement": "I lead product design teams that turn ambiguous problems into shipped, measurable outcomes — from 0→1 products to the systems that let large orgs move fast without breaking their craft.",
+  "location": "City, Country",
+  "email": "hello@example.com",
+  "availability": "Open to Head of Design / Director of Design roles",
+  "social": [
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/yourname" },
+    { "label": "Email", "url": "mailto:hello@example.com" }
+  ],
+  "nav": [
+    { "label": "Work", "href": "/work/" },
+    { "label": "Profile", "href": "/profile/" }
+  ]
+}

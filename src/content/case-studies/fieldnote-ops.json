@@ -1,0 +1,84 @@
+{
+  "title": "Zero to one for field operations",
+  "subtitle": "Designing a new product category for crews who work with gloves on, outdoors, offline",
+  "client": "Fieldnote",
+  "role": "Head of Product Design — founding design hire",
+  "year": "2022–2023",
+  "timeline": "14 months",
+  "team": "2 product designers, 1 PM, 6 engineers",
+  "tags": ["0→1", "Mobile", "Field Ops", "Offline-first"],
+  "summary": "Built the design practice and shipped v1 of a field-operations app for logistics crews, from first customer interviews through a 40-site rollout.",
+  "coverImage": {
+    "alt": "Fieldnote mobile app cover, dispatch and job-detail screens side by side"
+  },
+  "metrics": [
+    { "value": "40", "label": "sites onboarded in year one" },
+    { "value": "94%", "label": "daily active usage among crews" },
+    { "value": "11 min", "label": "avg. time saved per job vs. paper" }
+  ],
+  "featured": true,
+  "sample": true,
+  "order": 2,
+  "sections": [
+    {
+      "type": "text",
+      "eyebrow": "Context",
+      "heading": "Designing for a screen no one asked for",
+      "body": [
+        "Fieldnote's crews had never used a work app before — job assignments came from a radio call and a paper ticket. I was the first design hire, joining pre-product-market-fit, and my first job wasn't screens, it was figuring out whether a screen was even the right answer.",
+        "I spent three weeks riding along with crews across two sites before opening a design tool. The biggest early finding: gloves, glare, and one-handed use ruled out most conventional mobile patterns outright."
+      ]
+    },
+    {
+      "type": "image",
+      "figure": "01",
+      "image": {
+        "alt": "Field research photo grid documenting glove use, sun glare, and one-handed device operation",
+        "caption": "Field research, two sites, March 2022"
+      }
+    },
+    {
+      "type": "text",
+      "eyebrow": "Constraints",
+      "heading": "Designing for the worst network you've ever used",
+      "body": [
+        "Crews worked in warehouses and rural sites with unreliable connectivity. Every interaction had to work offline first and sync opportunistically — which meant rethinking basic patterns like 'saving' and 'submitting' as background, resilient operations rather than user-triggered network calls with loading states.",
+        "This constraint shaped the whole information architecture: instead of a screen-per-task model, we built around a persistent local job queue that crews could act on regardless of connection, with sync status expressed as ambient UI rather than blocking dialogs."
+      ]
+    },
+    {
+      "type": "gallery",
+      "figure": "02",
+      "heading": "System",
+      "images": [
+        { "alt": "Component sheet showing large touch-target buttons designed for gloved use" },
+        { "alt": "Offline sync state diagram showing queued, syncing, and confirmed states" },
+        { "alt": "High-contrast color system tested for outdoor glare readability" }
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "First app my crew actually asked to keep using after the pilot ended.",
+      "attribution": "Site supervisor, pilot site 2"
+    },
+    {
+      "type": "text",
+      "eyebrow": "Rollout",
+      "heading": "Scaling the design practice alongside the product",
+      "body": [
+        "As the team grew from 1 to 3 designers, I wrote the first version of Fieldnote's component guidelines directly from the shipped v1 UI rather than as an upfront system — documenting real, tested patterns instead of speculative ones. That library became the foundation for the design system a later platform team formalized.",
+        "By the end of year one we'd rolled out to 40 sites, and I'd hired and was managing the two designers who took over day-to-day ownership of the crew-facing app while I moved on to dispatch tooling."
+      ]
+    },
+    {
+      "type": "stats",
+      "heading": "One year in",
+      "items": [
+        { "value": "40", "label": "sites live" },
+        { "value": "94%", "label": "daily active crews" },
+        { "value": "11 min", "label": "saved per job" },
+        { "value": "3", "label": "designers on the team" }
+      ]
+    }
+  ]
+}

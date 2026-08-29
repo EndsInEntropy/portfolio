@@ -1,0 +1,57 @@
+---
+interface Props {
+  heading?: string;
+  items: { value: string; label: string }[];
+}
+
+const { heading, items } = Astro.props;
+---
+
+<div class="block stats-block wrap">
+  {heading && <p class="eyebrow stats-block__eyebrow">{heading}</p>}
+  <div class="stats-block__grid">
+    {items.map((item, i) => (
+      <div class="stats-block__item">
+        <span class="mono stats-block__index">{String(i + 1).padStart(2, '0')}</span>
+        <span class="display stats-block__value">{item.value}</span>
+        <span class="mono text-soft stats-block__label">{item.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .stats-block__eyebrow { margin-bottom: 1.5rem; }
+
+  .stats-block__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    border-top: 1px solid var(--line-strong);
+    border-left: 1px solid var(--line-strong);
+  }
+
+  .stats-block__item {
+    padding: 1.75rem 1.5rem;
+    border-right: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .stats-block__index {
+    font-size: var(--step--1);
+    color: var(--accent);
+  }
+
+  .stats-block__value {
+    font-size: var(--step-3);
+    line-height: 1;
+  }
+
+  .stats-block__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>

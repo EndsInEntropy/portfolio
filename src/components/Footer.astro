@@ -1,0 +1,78 @@
+---
+import site from '../data/site.json';
+import { withBase } from '../lib/url';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap"><hr class="rule" /></div>
+  <div class="wrap site-footer__grid grid-12">
+    <div class="site-footer__col">
+      <p class="eyebrow">Currently</p>
+      <p class="site-footer__lead display">{site.availability}</p>
+    </div>
+
+    <div class="site-footer__col site-footer__links">
+      <p class="eyebrow">Contact</p>
+      <ul>
+        {site.social.map((s: { label: string; url: string }) => (
+          <li><a class="link-arrow" href={s.url}>{s.label} →</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="site-footer__col site-footer__meta">
+      <p class="mono text-faint">{site.location}</p>
+      <p class="mono text-faint">© {year} {site.name}</p>
+      <p class="mono text-faint">
+        <a class="link-arrow" href={withBase('/')}>Index ↑</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(4rem, 3rem + 5vw, 8rem);
+    padding-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+
+  .site-footer__grid {
+    padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+
+  .site-footer__col {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .site-footer__lead {
+    font-size: var(--step-2);
+    max-width: 20ch;
+  }
+
+  .site-footer__links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .site-footer__meta {
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  @media (max-width: 720px) {
+    .site-footer__col { grid-column: span 4; }
+    .site-footer__grid { display: flex; flex-direction: column; gap: 2rem; }
+  }
+
+  @media (min-width: 721px) and (max-width: 1080px) {
+    .site-footer__col { grid-column: span 8; }
+    .site-footer__grid { display: flex; flex-direction: column; gap: 2rem; }
+  }
+</style>

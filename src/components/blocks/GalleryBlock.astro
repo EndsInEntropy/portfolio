@@ -1,0 +1,66 @@
+---
+import TechnicalPlaceholder from '../TechnicalPlaceholder.astro';
+
+interface Props {
+  figure?: string;
+  heading?: string;
+  images: { src?: string; alt: string; caption?: string }[];
+}
+
+const { figure, heading, images } = Astro.props;
+---
+
+<div class="block gallery-block wrap">
+  {(figure || heading) && (
+    <div class="gallery-block__head">
+      {figure && <span class="mono text-accent">FIG. {figure}</span>}
+      {heading && <h3 class="display gallery-block__heading">{heading}</h3>}
+    </div>
+  )}
+  <div class="gallery-block__grid">
+    {images.map((image, i) => (
+      <figure class="gallery-block__item">
+        {image.src
+          ? <img src={image.src} alt={image.alt} loading="lazy" />
+          : <TechnicalPlaceholder label={image.alt} figure={figure ? `${figure}.${i + 1}` : undefined} ratio="4/3" />}
+        {image.caption && <figcaption class="mono text-soft">{image.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery-block__head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-block__heading {
+    font-size: var(--step-1);
+  }
+
+  .gallery-block__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+
+  .gallery-block__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .gallery-block__item figcaption {
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 1080px) {
+    .gallery-block__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .gallery-block__grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TechnicalPlaceholder from '../../components/TechnicalPlaceholder.astro';
+import SectionBlocks from '../../components/blocks/SectionBlocks.astro';
+import { withBase } from '../../lib/url';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('case-studies');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, entries },
+  }));
+}
+
+const { entry, entries } = Astro.props;
+const d = entry.data;
+
+const ordered = [...entries].sort((a, b) => a.data.order - b.data.order);
+const currentIndex = ordered.findIndex((e) => e.id === entry.id);
+const next = ordered[(currentIndex + 1) % ordered.length];
+
+const specs = [
+  { label: 'Client', value: d.client },
+  { label: 'Role', value: d.role },
+  { label: 'Year', value: d.year },
+  d.timeline ? { label: 'Timeline', value: d.timeline } : null,
+  d.team ? { label: 'Team', value: d.team } : null,
+].filter(Boolean) as { label: string; value: string }[];
+---
+
+<BaseLayout title={d.title} description={d.summary}>
+  <article>
+    <header class="cs-hero wrap">
+      <div class="cs-hero__top">
+        <p class="eyebrow">{d.client}</p>
+        {d.sample && <span class="tag tag--sample">Sample content</span>}
+      </div>
+
+      <h1 class="display cs-hero__title">{d.title}</h1>
+      <p class="prose text-soft cs-hero__subtitle">{d.subtitle}</p>
+
+      <ul class="cs-hero__tags">
+        {d.tags.map((t: string) => <li class="tag">{t}</li>)}
+      </ul>
+    </header>
+
+    <section class="cs-specs wrap">
+      <dl class="cs-specs__grid">
+        {specs.map((s) => (
+          <div class="cs-specs__item">
+            <dt class="mono text-faint">{s.label}</dt>
+            <dd class="mono">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <figure class="cs-cover">
+      <div class="wrap">
+        {d.coverImage.src
+          ? <img src={d.coverImage.src} alt={d.coverImage.alt} />
+          : <TechnicalPlaceholder label={d.coverImage.alt} figure="00" ratio="21/9" />}
+      </div>
+      {d.coverImage.caption && (
+        <figcaption class="wrap mono text-soft cs-cover__caption">{d.coverImage.caption}</figcaption>
+      )}
+    </figure>
+
+    {d.metrics.length > 0 && (
+      <section class="cs-metrics wrap">
+        <div class="cs-metrics__grid">
+          {d.metrics.map((m: { value: string; label: string }) => (
+            <div class="cs-metrics__item">
+              <span class="display cs-metrics__value">{m.value}</span>
+              <span class="mono text-soft cs-metrics__label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="wrap"><hr class="rule" /></div>
+
+    <section class="cs-body wrap">
+      <SectionBlocks sections={d.sections} />
+    </section>
+
+    <div class="wrap"><hr class="rule" /></div>
+
+    <section class="cs-next wrap">
+      <p class="eyebrow">Next case study</p>
+      <a class="cs-next__link" href={withBase(`/work/${next.id}/`)}>
+        <span class="display cs-next__title">{next.data.title}</span>
+        <span class="mono cs-next__arrow">→</span>
+      </a>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .cs-hero {
+    padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    padding-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+
+  .cs-hero__top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cs-hero__title {
+    font-size: var(--step-4);
+    margin-top: 0.75rem;
+    max-width: 20ch;
+  }
+
+  .cs-hero__subtitle {
+    font-size: var(--step-1);
+    margin-top: 1rem;
+    max-width: 56ch;
+  }
+
+  .cs-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .cs-specs {
+    padding-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  }
+
+  .cs-specs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .cs-specs__item {
+    padding: 1rem 1.25rem;
+    border-left: 1px solid var(--line-strong);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cs-specs__item:last-child { border-right: 1px solid var(--line-strong); }
+
+  .cs-specs__item dt {
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .cs-specs__item dd {
+    font-size: var(--step--1);
+    margin: 0;
+  }
+
+  .cs-cover {
+    margin-block: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+
+  .cs-cover img {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    border: 1px solid var(--line);
+  }
+
+  .cs-cover__caption {
+    margin-top: 0.75rem;
+    font-size: var(--step--1);
+  }
+
+  .cs-metrics {
+    padding-bottom: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+
+  .cs-metrics__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+
+  .cs-metrics__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cs-metrics__value {
+    font-size: var(--step-3);
+    color: var(--accent);
+  }
+
+  .cs-metrics__label {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cs-body {
+    padding-block: clamp(3rem, 2rem + 4vw, 6rem);
+  }
+
+  .cs-next {
+    padding-block: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+
+  .cs-next__link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cs-next__title {
+    font-size: var(--step-4);
+    transition: color 0.2s ease;
+  }
+
+  .cs-next__arrow {
+    font-size: var(--step-2);
+    color: var(--accent);
+    transition: transform 0.2s ease;
+  }
+
+  .cs-next__link:hover .cs-next__title { color: var(--accent); }
+  .cs-next__link:hover .cs-next__arrow { transform: translateX(6px); }
+</style>

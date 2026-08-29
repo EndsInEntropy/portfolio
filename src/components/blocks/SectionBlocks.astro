@@ -1,0 +1,44 @@
+---
+import TextBlock from './TextBlock.astro';
+import ImageBlock from './ImageBlock.astro';
+import GalleryBlock from './GalleryBlock.astro';
+import QuoteBlock from './QuoteBlock.astro';
+import StatsBlock from './StatsBlock.astro';
+import SideBySideBlock from './SideBySideBlock.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  sections: CollectionEntry<'case-studies'>['data']['sections'];
+}
+
+const { sections } = Astro.props;
+---
+
+<div class="section-blocks">
+  {sections.map((section) => {
+    switch (section.type) {
+      case 'text':
+        return <TextBlock eyebrow={section.eyebrow} heading={section.heading} body={section.body} />;
+      case 'image':
+        return <ImageBlock figure={section.figure} full={section.full} image={section.image} />;
+      case 'gallery':
+        return <GalleryBlock figure={section.figure} heading={section.heading} images={section.images} />;
+      case 'quote':
+        return <QuoteBlock text={section.text} attribution={section.attribution} />;
+      case 'stats':
+        return <StatsBlock heading={section.heading} items={section.items} />;
+      case 'sidebyside':
+        return <SideBySideBlock left={section.left} right={section.right} />;
+      default:
+        return null;
+    }
+  })}
+</div>
+
+<style>
+  .section-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 2.2rem + 4vw, 6rem);
+  }
+</style>

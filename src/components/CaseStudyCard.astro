@@ -1,0 +1,97 @@
+---
+import TechnicalPlaceholder from './TechnicalPlaceholder.astro';
+import { withBase } from '../lib/url';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'case-studies'>;
+  index: number;
+}
+
+const { entry, index } = Astro.props;
+const d = entry.data;
+---
+
+<a class="cs-card" href={withBase(`/work/${entry.id}/`)}>
+  <div class="cs-card__media">
+    {d.coverImage.src
+      ? <img src={d.coverImage.src} alt={d.coverImage.alt} loading="lazy" />
+      : <TechnicalPlaceholder label={d.coverImage.alt} figure={String(index).padStart(2, '0')} ratio="4/3" />}
+  </div>
+
+  <div class="cs-card__body">
+    <div class="cs-card__top">
+      <span class="mono text-accent">{String(index).padStart(2, '0')}</span>
+      <span class="mono text-faint">{d.year}</span>
+      {d.sample && <span class="tag tag--sample">Sample</span>}
+    </div>
+
+    <h3 class="display cs-card__title">{d.title}</h3>
+    <p class="prose text-soft cs-card__summary">{d.summary}</p>
+
+    <ul class="cs-card__tags">
+      {d.tags.map((t: string) => <li class="mono">{t}</li>)}
+    </ul>
+  </div>
+</a>
+
+<style>
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cs-card__media {
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .cs-card__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .cs-card:hover .cs-card__media img {
+    transform: scale(1.03);
+  }
+
+  .cs-card__top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: var(--step--1);
+  }
+
+  .cs-card__title {
+    font-size: var(--step-2);
+    margin-top: 0.4rem;
+  }
+
+  .cs-card__summary {
+    font-size: var(--step-0);
+    max-width: 48ch;
+  }
+
+  .cs-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+  }
+
+  .cs-card__tags li {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .cs-card__tags li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.6rem;
+    color: var(--line-strong);
+  }
+</style>

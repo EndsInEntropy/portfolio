@@ -1,0 +1,57 @@
+---
+interface Side {
+  heading?: string;
+  body: string[];
+}
+
+interface Props {
+  left: Side;
+  right: Side;
+}
+
+const { left, right } = Astro.props;
+---
+
+<div class="block sbs-block wrap">
+  <div class="sbs-block__grid">
+    <div class="sbs-block__col">
+      <p class="eyebrow">Before</p>
+      {left.heading && <h4 class="display sbs-block__heading">{left.heading}</h4>}
+      <div class="prose">{left.body.map((p) => <p>{p}</p>)}</div>
+    </div>
+    <div class="sbs-block__divider" aria-hidden="true"></div>
+    <div class="sbs-block__col sbs-block__col--accent">
+      <p class="eyebrow">After</p>
+      {right.heading && <h4 class="display sbs-block__heading">{right.heading}</h4>}
+      <div class="prose">{right.body.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sbs-block__grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    border: 1px solid var(--line-strong);
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+
+  .sbs-block__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .sbs-block__heading { font-size: var(--step-1); }
+
+  .sbs-block__divider {
+    width: 1px;
+    background: var(--line-strong);
+  }
+
+  @media (max-width: 720px) {
+    .sbs-block__grid { grid-template-columns: 1fr; }
+    .sbs-block__divider { width: 100%; height: 1px; }
+  }
+</style>

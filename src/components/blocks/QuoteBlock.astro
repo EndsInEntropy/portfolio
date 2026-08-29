@@ -1,0 +1,49 @@
+---
+interface Props {
+  text: string;
+  attribution?: string;
+}
+
+const { text, attribution } = Astro.props;
+---
+
+<figure class="block quote-block wrap">
+  <div class="quote-block__inner grid-12">
+    <span class="quote-block__mark mono" aria-hidden="true">“</span>
+    <blockquote class="display quote-block__text">{text}</blockquote>
+    {attribution && <figcaption class="mono text-soft quote-block__attr">— {attribution}</figcaption>}
+  </div>
+</figure>
+
+<style>
+  .quote-block__inner {
+    grid-column: 1 / -1;
+  }
+
+  .quote-block__mark {
+    grid-column: 1 / span 1;
+    font-size: var(--step-4);
+    color: var(--accent);
+    line-height: 0.6;
+  }
+
+  .quote-block__text {
+    grid-column: 2 / span 9;
+    font-size: var(--step-2);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.25;
+  }
+
+  .quote-block__attr {
+    grid-column: 2 / span 9;
+    margin-top: 1.25rem;
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 1080px) {
+    .quote-block__mark { grid-column: 1 / -1; }
+    .quote-block__text,
+    .quote-block__attr { grid-column: 1 / -1; }
+  }
+</style>

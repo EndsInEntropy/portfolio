@@ -1,0 +1,45 @@
+{
+  "portrait": {
+    "src": null,
+    "alt": "Portrait of Your Name"
+  },
+  "intro": [
+    "I'm a design leader with over a decade of experience building and running product design teams, most recently as Head of Product Design at a Series C SaaS company. I work at the intersection of craft and organization — I still open Figma, but the job now is mostly about the decisions, structures and hires that let a team do their best work at scale.",
+    "My background spans 0→1 product design, design systems, and design operations across payments, healthcare, and field-operations software. I'm most useful to a company that needs someone to build a design practice from a standing start, or to bring order and craft back to one that's outgrown its process."
+  ],
+  "focusAreas": [
+    {
+      "heading": "0→1 product design",
+      "body": "Taking a problem from first customer conversations through a shipped, validated v1 — comfortable owning research, IA, interaction and visual design when a team is too early to have specialists."
+    },
+    {
+      "heading": "Design systems & design ops",
+      "body": "Building the governance, tooling and contribution models that let a system survive company growth, not just the components themselves."
+    },
+    {
+      "heading": "Team building & leadership",
+      "body": "Hiring, mentoring and structuring design teams — including founding design functions inside organizations that had none."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Head of Product Design",
+      "org": "Northwind Commerce",
+      "period": "2023 — Present",
+      "summary": "Leading a team of 4 designers and 1 researcher across payments, checkout and merchant tooling."
+    },
+    {
+      "role": "Founding Product Designer → Design Manager",
+      "org": "Fieldnote",
+      "period": "2021 — 2023",
+      "summary": "First design hire; built the design practice and shipped v1 of the field-operations product."
+    },
+    {
+      "role": "Senior Product Designer",
+      "org": "Atlas Health",
+      "period": "2018 — 2021",
+      "summary": "Sponsored and helped staff the company's first design systems team."
+    }
+  ],
+  "resumeUrl": null
+}
