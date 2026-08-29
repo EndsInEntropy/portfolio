@@ -63,9 +63,12 @@ const specs = [
 
     <figure class="cs-cover">
       <div class="wrap">
-        {d.coverImage.src
-          ? <img src={d.coverImage.src} alt={d.coverImage.alt} />
-          : <TechnicalPlaceholder label={d.coverImage.alt} figure="00" ratio="21/9" />}
+        <div class="cs-cover__frame">
+          {d.coverImage.src
+            ? <img src={d.coverImage.src} alt={d.coverImage.alt} />
+            : <TechnicalPlaceholder label={d.coverImage.alt} figure="00" ratio="21/9" />}
+          <span class="media-cut cs-cover__cut" aria-hidden="true"></span>
+        </div>
       </div>
       {d.coverImage.caption && (
         <figcaption class="wrap text-soft cs-cover__caption">{d.coverImage.caption}</figcaption>
@@ -113,14 +116,17 @@ const specs = [
 
   .cs-hero__ghost {
     top: -0.35em;
-    right: var(--margin);
-    font-size: clamp(5rem, 3.5rem + 9vw, 11rem);
+    right: calc(var(--margin) + 3.5rem);
+    font-size: clamp(4rem, 3rem + 7vw, 9rem);
   }
 
   .cs-hero__vertical {
     position: absolute;
-    top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-    right: calc(var(--margin) * 0.4);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: clamp(2.5rem, 2rem + 1.5vw, 3.25rem);
+    z-index: 2;
   }
 
   @media (max-width: 720px) {
@@ -189,10 +195,20 @@ const specs = [
     margin-block: clamp(2rem, 1.5rem + 2vw, 3.5rem);
   }
 
+  .cs-cover__frame {
+    position: relative;
+    overflow: hidden;
+  }
+
   .cs-cover img {
     width: 100%;
     aspect-ratio: 21 / 9;
     object-fit: cover;
+  }
+
+  .cs-cover__cut {
+    top: 42%;
+    height: 16%;
   }
 
   .cs-cover__caption {

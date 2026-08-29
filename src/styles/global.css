@@ -144,19 +144,37 @@ body {
 }
 
 /* ==========================================================================
-   Vertical rotated label — running along an edge, technical-annotation style
+   Vertical rotated label — a solid color block cutting through the edge,
+   running text set inside it
    ========================================================================== */
 .vertical-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-family: var(--font-mono);
   font-size: var(--step--1);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--accent-ink);
+  background: var(--accent);
   white-space: nowrap;
+  padding-block: 1.5rem;
 }
 .text-accent { color: var(--accent); }
+
+/* ==========================================================================
+   Media cut — a solid color bar overlaid across an image, cutting through it
+   ========================================================================== */
+.media-cut {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 1;
+}
 
 .prose p + p { margin-top: 1.1em; }
 .prose { max-width: 62ch; }
@@ -199,13 +217,15 @@ body {
 }
 
 .btn--accent {
-  color: var(--ink);
-  border-color: var(--ink);
+  padding: 0.7em 1.4em;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-bottom: 0;
+  transition: background 0.15s ease;
 }
 
 .btn--accent:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  background: var(--ink);
 }
 
 /* ==========================================================================

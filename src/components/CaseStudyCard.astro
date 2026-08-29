@@ -17,6 +17,7 @@ const d = entry.data;
     {d.coverImage.src
       ? <img src={d.coverImage.src} alt={d.coverImage.alt} loading="lazy" />
       : <TechnicalPlaceholder label={d.coverImage.alt} figure={String(index).padStart(2, '0')} ratio="4/3" />}
+    <span class="media-cut cs-card__cut" aria-hidden="true"></span>
   </div>
 
   <div class="cs-card__body">
@@ -46,7 +47,13 @@ const d = entry.data;
   }
 
   .cs-card__media {
+    position: relative;
     overflow: hidden;
+  }
+
+  .cs-card__cut {
+    top: 46%;
+    height: 14%;
   }
 
   .cs-card__body {

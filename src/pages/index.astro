@@ -55,6 +55,7 @@ const year = new Date().getFullYear();
               {entry.data.coverImage.src
                 ? <img src={entry.data.coverImage.src} alt={entry.data.coverImage.alt} loading="lazy" />
                 : <TechnicalPlaceholder label={entry.data.coverImage.alt} ratio="4/3" minimal />}
+              <span class="media-cut index-row__cut" aria-hidden="true"></span>
             </span>
 
             <span class="mono index-row__arrow" aria-hidden="true">→</span>
@@ -87,14 +88,17 @@ const year = new Date().getFullYear();
 
   .hero__ghost {
     top: -0.3em;
-    right: var(--margin);
-    font-size: clamp(6rem, 4rem + 12vw, 16rem);
+    right: calc(var(--margin) + 3.5rem);
+    font-size: clamp(5rem, 3.5rem + 10vw, 14rem);
   }
 
   .hero__vertical {
     position: absolute;
-    top: clamp(2rem, 1.5rem + 3vw, 5rem);
-    right: calc(var(--margin) * 0.4);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: clamp(2.5rem, 2rem + 1.5vw, 3.25rem);
+    z-index: 2;
   }
 
   .hero__grid { position: relative; z-index: 1; row-gap: 1.25rem; }
@@ -203,6 +207,11 @@ const year = new Date().getFullYear();
     width: 88px;
     aspect-ratio: 4 / 3;
     overflow: hidden;
+  }
+
+  .index-row__cut {
+    top: 44%;
+    height: 18%;
   }
 
   .index-row__thumb img { width: 100%; height: 100%; object-fit: cover; }
