@@ -2,18 +2,18 @@
    Design tokens
    ========================================================================== */
 :root {
-  /* Color — quiet paper, slate-black ink, one forest-green signal accent */
-  --paper: #f1f0ea;
-  --surface: #e7e7e1;
+  /* Color — quiet paper (matched to CV background), slate-black ink, one forest-green signal accent */
+  --paper: #f9f9f9;
+  --surface: #ececec;
   --ink: #14171a;
-  --ink-soft: #52585c;
-  --ink-faint: #8a9096;
-  --line: #d8dad6;
-  --line-strong: #b7bcb8;
+  --ink-soft: #55585b;
+  --ink-faint: #8d9093;
+  --line: #dcdcdc;
+  --line-strong: #c4c4c4;
   --accent: #1f5d40;
   --accent-ink: #f2f7f3;
   --accent-soft: #e3ede6;
-  --ghost: #e2e3dd;
+  --ghost: #ebebeb;
 
   /* Type */
   --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
