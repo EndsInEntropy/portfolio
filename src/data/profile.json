@@ -1,45 +1,69 @@
 {
   "portrait": {
     "src": null,
-    "alt": "Portrait of Your Name"
+    "alt": "Portrait of Chris Houlding"
   },
   "intro": [
-    "I'm a design leader with over a decade of experience building and running product design teams, most recently as Head of Product Design at a Series C SaaS company. I work at the intersection of craft and organization — I still open Figma, but the job now is mostly about the decisions, structures and hires that let a team do their best work at scale.",
-    "My background spans 0→1 product design, design systems, and design operations across payments, healthcare, and field-operations software. I'm most useful to a company that needs someone to build a design practice from a standing start, or to bring order and craft back to one that's outgrown its process."
+    "I'm a design leader who builds high-performing teams and design cultures in regulated, high-trust industries — turning complex, technical interactions into experiences people genuinely understand and rely on.",
+    "Across fifteen-plus years I've led product design on both the B2C and B2B sides of the customer relationship. Getting as far upstream in the decision-making process as possible to shape the problem, not just validate solutions, is what continues to drive successful outcomes for both customer and business."
   ],
   "focusAreas": [
     {
-      "heading": "0→1 product design",
-      "body": "Taking a problem from first customer conversations through a shipped, validated v1 — comfortable owning research, IA, interaction and visual design when a team is too early to have specialists."
+      "heading": "Product & experience strategy",
+      "body": "Setting the strategy and operating model for design functions, and getting customer evidence upstream into business decisions rather than validating them after the fact."
     },
     {
       "heading": "Design systems & design ops",
-      "body": "Building the governance, tooling and contribution models that let a system survive company growth, not just the components themselves."
+      "body": "Built Nationwide's first multi-platform design system and intelliflo's first production design system — plus the AI-enabled operations that cut concept-to-PRD time by 35%."
     },
     {
-      "heading": "Team building & leadership",
-      "body": "Hiring, mentoring and structuring design teams — including founding design functions inside organizations that had none."
+      "heading": "Design leadership & team-building",
+      "body": "Built and led design functions and communities of 90+ designers across financial services, healthcare and mortgage lending."
     }
   ],
   "experience": [
     {
-      "role": "Head of Product Design",
-      "org": "Northwind Commerce",
+      "role": "Head of UX",
+      "org": "intelliflo",
       "period": "2023 — Present",
-      "summary": "Leading a team of 4 designers and 1 researcher across payments, checkout and merchant tooling."
+      "summary": "Leading UX for the UK's leading back-office platform for financial advisers. Built intelliflo's first production design system and integrated AI across design operations for 35% faster concept-to-PRD delivery, with measurable gains in customer satisfaction (+12-point UMUX-lite) and feature adoption (+15% on Wealthlink)."
     },
     {
-      "role": "Founding Product Designer → Design Manager",
-      "org": "Fieldnote",
-      "period": "2021 — 2023",
-      "summary": "First design hire; built the design practice and shipped v1 of the field-operations product."
+      "role": "Head of Product Design",
+      "org": "DrDoctor",
+      "period": "2022 — 2023",
+      "summary": "Led the Product Design function through a company-wide shift to a design-led, user-centred culture. Launched a centralised insights hub and introduced UX metrics (UMUX-lite) to measure product impact."
     },
     {
-      "role": "Senior Product Designer",
-      "org": "Atlas Health",
-      "period": "2018 — 2021",
-      "summary": "Sponsored and helped staff the company's first design systems team."
+      "role": "Senior Product Design Manager / DesOps",
+      "org": "Nationwide Building Society",
+      "period": "2020 — 2022",
+      "summary": "Built and developed a community of 90+ product designers, and defined the Service and Experience Design adoption strategy across Engineering, Product and Marketing."
+    },
+    {
+      "role": "Product Design Lead / Manager",
+      "org": "Nationwide Building Society",
+      "period": "2016 — 2020",
+      "summary": "Led the creation and adoption of Nationwide's first multi-platform design system, and contributed directly to critical member journeys including mortgage applications and a financial wellbeing health check tool."
+    },
+    {
+      "role": "Head of Website Design",
+      "org": "Mubaloo Ltd. (IPG Mediabrands)",
+      "period": "2013 — 2016",
+      "summary": "Oversaw the website and web-application division as a product design specialist, working the full project lifecycle for global brands from client pitch through to design, testing and brand direction."
+    },
+    {
+      "role": "Senior Digital Designer",
+      "org": "Oakwood Media Group",
+      "period": "2007 — 2013",
+      "summary": "Designed and built websites for Mattel sub-brands including Barbie and Hot Wheels, translating client briefs into digital solutions for international promotions."
+    },
+    {
+      "role": "Digital / Graphic Designer",
+      "org": "Asabell Ltd.",
+      "period": "2004 — 2007",
+      "summary": "B2B digital and print communications for clients including BT, O2 and RBS."
     }
   ],
-  "resumeUrl": null
+  "resumeUrl": "/cv/chris-houlding-cv.pdf"
 }

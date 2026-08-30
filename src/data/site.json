@@ -1,13 +1,12 @@
 {
-  "name": "Your Name",
-  "title": "Head of Product Design",
-  "heroStatement": "I lead product design teams that turn ambiguous problems into shipped, measurable outcomes — from 0→1 products to the systems that let large orgs move fast without breaking their craft.",
-  "location": "City, Country",
-  "email": "hello@example.com",
-  "availability": "Open to Head of Design / Director of Design roles",
+  "name": "Chris Houlding",
+  "title": "Head of UX",
+  "heroStatement": "I build high-performing design teams and design cultures in regulated, high-trust industries — turning complex, technical interactions into experiences people genuinely understand and rely on.",
+  "location": "United Kingdom",
+  "email": "houlding.chris@gmail.com",
+  "availability": "Head of UX at intelliflo",
   "social": [
-    { "label": "LinkedIn", "url": "https://linkedin.com/in/yourname" },
-    { "label": "Email", "url": "mailto:hello@example.com" }
+    { "label": "Email", "url": "mailto:houlding.chris@gmail.com" }
   ],
   "nav": [
     { "label": "Work", "href": "/work/" },

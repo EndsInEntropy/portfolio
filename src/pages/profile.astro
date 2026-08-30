@@ -26,6 +26,9 @@ import profile from '../data/profile.json';
 
         <div class="profile-hero__actions">
           <a class="btn btn--accent" href={`mailto:${site.email}`}>Email me</a>
+          {profile.resumeUrl && (
+            <a class="btn" href={withBase(profile.resumeUrl)} download>Download CV</a>
+          )}
           <a class="btn" href={withBase('/work/')}>See the work</a>
         </div>
       </div>
