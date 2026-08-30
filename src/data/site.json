@@ -5,9 +5,7 @@
   "location": "LDN / BTH / RMT",
   "email": "houlding.chris@gmail.com",
   "availability": "Head of UX at intelliflo",
-  "social": [
-    { "label": "Email", "url": "mailto:houlding.chris@gmail.com" }
-  ],
+  "social": [],
   "nav": [
     { "label": "Work", "href": "/work/" },
     { "label": "Profile", "href": "/profile/" }

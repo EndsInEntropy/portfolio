@@ -1,0 +1,22 @@
+---
+// Renders a mailto link without ever putting the plaintext address in the
+// static HTML — the href is assembled client-side from a base64 blob, so a
+// scraper that just regexes the page source finds nothing to harvest.
+interface Props {
+  email: string;
+  class?: string;
+}
+
+const { email, class: className } = Astro.props;
+const encoded = btoa(email);
+---
+
+<a class={className} data-mail={encoded} href="#"><slot /></a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('a[data-mail]').forEach((el) => {
+    const address = atob(el.dataset.mail!);
+    el.href = `mailto:${address}`;
+    el.removeAttribute('data-mail');
+  });
+</script>

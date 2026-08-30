@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TechnicalPlaceholder from '../components/TechnicalPlaceholder.astro';
+import MailLink from '../components/MailLink.astro';
 import { withBase } from '../lib/url';
 import site from '../data/site.json';
 import profile from '../data/profile.json';
@@ -25,7 +26,7 @@ import profile from '../data/profile.json';
         </div>
 
         <div class="profile-hero__actions">
-          <a class="btn btn--accent" href={`mailto:${site.email}`}>Email me</a>
+          <MailLink class="btn btn--accent" email={site.email}>Email me</MailLink>
           {profile.resumeUrl && (
             <a class="btn" href={withBase(profile.resumeUrl)} download>Download CV</a>
           )}

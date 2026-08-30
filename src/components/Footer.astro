@@ -1,6 +1,7 @@
 ---
 import site from '../data/site.json';
 import { withBase } from '../lib/url';
+import MailLink from './MailLink.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -16,6 +17,7 @@ const year = new Date().getFullYear();
     <div class="site-footer__col site-footer__links">
       <p class="eyebrow">Contact</p>
       <ul>
+        <li><MailLink class="link-arrow" email={site.email}>Email →</MailLink></li>
         {site.social.map((s: { label: string; url: string }) => (
           <li><a class="link-arrow" href={s.url}>{s.label} →</a></li>
         ))}
